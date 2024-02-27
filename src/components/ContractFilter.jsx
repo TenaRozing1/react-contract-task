@@ -9,7 +9,6 @@ const ContractFilter = ({ clients, handleFilterChange }) => {
           <option key={index} value={client}>{client}</option>
         ))}
       </select>
-      <input type="date" onChange={handleFilterChange} />
     </div>
   );
 };
