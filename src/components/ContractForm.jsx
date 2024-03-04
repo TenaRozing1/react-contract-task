@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ContractForm = () => {
+const ContractForm = ({ clients, handleAddContract }) => {
   const [contractData, setContractData] = useState({
     contractName: "",
     client: "",
@@ -16,9 +16,11 @@ const ContractForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // logic for contract save
-    console.log(contractData);
-    // reset
+    handleAddContract({
+      id: Date.now(),
+      ...contractData,
+      duration: parseInt(contractData.duration),
+    });
     setContractData({
       contractName: "",
       client: "",
@@ -38,14 +40,19 @@ const ContractForm = () => {
         placeholder="Contract Name"
         required
       />
-      <input
-        type="text"
+      <select
         name="client"
         value={contractData.client}
         onChange={handleChange}
-        placeholder="Client"
         required
-      />
+      >
+        <option value="">Select Client</option>
+        {clients.map((client, index) => (
+          <option key={index} value={client}>
+            {client}
+          </option>
+        ))}
+      </select>
       <input
         type="date"
         name="startDate"
