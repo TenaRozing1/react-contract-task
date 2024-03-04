@@ -57,3 +57,14 @@ export const clients = [
   "Robin Hood",
   "Anna Beck",
 ];
+
+export const addContract = (newContract) => {
+  contracts.push(newContract);
+};
+
+export const deleteContract = (id) => {
+  const index = contracts.findIndex((contract) => contract.id === id);
+  if (index !== -1) {
+    contracts.splice(index, 1);
+  }
+};
