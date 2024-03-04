@@ -1,25 +1,31 @@
 import React from "react";
 
-const ContractTable = ({ contracts }) => {
+const ContractTable = ({ contracts, handleDeleteContract }) => {
   return (
     <table>
-      <th>
+      <thead>
         <tr>
           <th>Contract Name</th>
           <th>Client</th>
           <th>Start Date</th>
           <th>Duration</th>
           <th>Comments</th>
+          <th>Action</th>
         </tr>
-      </th>
+      </thead>
       <tbody>
-        {contracts.map((contract, index) => (
-          <tr key={index}>
+        {contracts.map((contract) => (
+          <tr key={contract.id}>
             <td>{contract.contractName}</td>
             <td>{contract.client}</td>
             <td>{contract.startDate}</td>
             <td>{contract.duration} months</td>
             <td>{contract.comments}</td>
+            <td>
+              <button onClick={() => handleDeleteContract(contract.id)}>
+                Delete
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>
