@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-const ContractTable = ({ contracts, handleDeleteContract }) => {
+const ContractTable = ({ contracts, handleDeleteContract, userRole }) => {
   return (
     <table>
       <thead>
@@ -10,7 +10,7 @@ const ContractTable = ({ contracts, handleDeleteContract }) => {
           <th>Start Date</th>
           <th>Duration</th>
           <th>Comments</th>
-          <th>Action</th>
+          {userRole === "admin" && <th>Action</th>}
         </tr>
       </thead>
       <tbody>
@@ -21,11 +21,13 @@ const ContractTable = ({ contracts, handleDeleteContract }) => {
             <td>{contract.startDate}</td>
             <td>{contract.duration} months</td>
             <td>{contract.comments}</td>
-            <td>
-              <button onClick={() => handleDeleteContract(contract.id)}>
-                Delete
-              </button>
-            </td>
+            {userRole === "admin" && (
+              <td>
+                <button onClick={() => handleDeleteContract(contract.id)}>
+                  Delete
+                </button>
+              </td>
+            )}
           </tr>
         ))}
       </tbody>
