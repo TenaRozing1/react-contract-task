@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ContractForm from "./components/ContractForm";
 import ContractTable from "./components/ContractTable";
 import ContractFilter from "./components/ContractFilter";
-import { contracts, clients, addContract, deleteContract } from "./components/data";
+import Homepage from "./components/Homepage";
+import {
+  contracts,
+  clients,
+  addContract,
+  deleteContract,
+} from "./components/data";
 
 const App = () => {
+  const [userRole, setUserRole] = useState(null);
   const [filteredContracts, setFilteredContracts] = useState(contracts);
 
   const handleFilterChange = (filterType, filterValue) => {
@@ -39,13 +46,29 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Contract Management System</h1>
-      <ContractForm clients={clients} handleAddContract={handleAddContract} />
-      <ContractFilter handleFilterChange={handleFilterChange} />
-      <ContractTable
-        contracts={filteredContracts}
-        handleDeleteContract={handleDeleteContract}
-      />
+      {userRole === null ? (
+        <Homepage setUserRole={setUserRole} />
+      ) : (
+        <>
+          <h1>Contract Management System</h1>
+          {userRole === "admin" && (
+            <ContractForm
+              clients={clients}
+              handleAddContract={handleAddContract}
+            />
+          )}
+          {userRole === "admin" && (
+            <ContractFilter handleFilterChange={handleFilterChange} />
+          )}
+          <ContractTable
+            contracts={filteredContracts}
+            handleDeleteContract={
+              userRole === "admin" ? handleDeleteContract : null
+            }
+            userRole={userRole}
+          />
+        </>
+      )}
     </div>
   );
 };
