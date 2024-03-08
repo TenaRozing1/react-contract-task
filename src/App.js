@@ -18,24 +18,23 @@ const App = () => {
     let filteredData = [];
 
     if (filterType === "client") {
-      filteredData = contracts.filter(
-        (contract) => contract.client === filterValue
-      );
-    } else if (filterType === "duration") {
-      filteredData = contracts.filter(
-        (contract) => contract.duration === parseInt(filterValue)
-      );
-    } else if (filterType === "latest") {
-      filteredData = contracts.slice(-3);
+      if (filterValue.trim() !== "") {
+        filteredData = contracts.filter((contract) =>
+          contract.client.toLowerCase().includes(filterValue.toLowerCase())
+        );
+      } else {
+        filteredData = contracts;
+      }
     }
 
     setFilteredContracts(filteredData);
   };
 
   const handleAddContract = (newContract) => {
-    addContract(newContract);
-    setFilteredContracts([...filteredContracts, newContract]);
+    // addContract(newContract);
+    setFilteredContracts([...filteredContracts, { ...newContract }]);
   };
+  
 
   const handleDeleteContract = (id) => {
     deleteContract(id);
