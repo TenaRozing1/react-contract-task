@@ -40,7 +40,7 @@ export const contracts = [
     comments: "I live in Sherwood Forest.",
   },
   {
-    id: 2,
+    id: 6,
     contractName: "Contract 6",
     client: "Anna Beck",
     startDate: "2022-07-11",
