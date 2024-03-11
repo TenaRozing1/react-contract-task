@@ -48,7 +48,6 @@ const App = () => {
         <Homepage setUserRole={setUserRole} />
       ) : (
         <>
-          <h1>Contract Management System</h1>
           {userRole === "admin" && (
             <ContractForm
               clients={clients}
