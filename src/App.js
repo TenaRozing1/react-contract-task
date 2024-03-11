@@ -64,6 +64,7 @@ const App = () => {
               userRole === "admin" ? handleDeleteContract : null
             }
             userRole={userRole}
+            setUserRole={setUserRole} // Dodajte ovu liniju
           />
         </>
       )}

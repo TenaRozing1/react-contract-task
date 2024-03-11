@@ -1,6 +1,11 @@
 import React from "react";
 
-const ContractTable = ({ contracts, handleDeleteContract, setUserRole }) => {
+const ContractTable = ({
+  contracts,
+  handleDeleteContract,
+  userRole,
+  setUserRole,
+}) => {
   return (
     <div>
       {contracts.length === 0 ? (
@@ -14,7 +19,7 @@ const ContractTable = ({ contracts, handleDeleteContract, setUserRole }) => {
               <th>Start Date</th>
               <th>Duration</th>
               <th>Comments</th>
-              <th>Action</th>
+              {userRole === "admin" && <th>Action</th>}
             </tr>
           </thead>
           <tbody>
@@ -25,11 +30,13 @@ const ContractTable = ({ contracts, handleDeleteContract, setUserRole }) => {
                 <td>{contract.startDate}</td>
                 <td>{contract.duration} months</td>
                 <td>{contract.comments}</td>
-                <td>
-                  <button onClick={() => handleDeleteContract(contract.id)}>
-                    Delete
-                  </button>
-                </td>
+                {userRole === "admin" && (
+                  <td>
+                    <button onClick={() => handleDeleteContract(contract.id)}>
+                      Delete
+                    </button>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
