@@ -16,6 +16,7 @@ const Homepage = ({ setUserRole }) => {
   return (
     <div className="homepage-container">
       <h1 className="homepage-title">Welcome to Contract Management System</h1>
+      <h2 className="homepage-subtitle">Not Content Managment System :D</h2>
       <form className="homepage-form" onSubmit={handleSubmit}>
         <label className="form-label">
           <input
