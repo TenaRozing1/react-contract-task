@@ -1,0 +1,43 @@
+.contract-grid {
+  margin: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+
+  .message {
+    text-align: center;
+  }
+
+  .contract-name-title {
+    text-align: center;
+  }
+
+  .contract-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .contract-text {
+      margin-bottom: 12px;
+
+      .contract-subtitle {
+        font-weight: 500;
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .contract-card button {
+    background-color: #ff4d4f;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 8px;
+    cursor: pointer;
+  }
+
+  .contract-card button:hover {
+    background-color: #ff7875;
+  }
+}

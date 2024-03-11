@@ -1,46 +1,38 @@
 import React from "react";
+import "./contract-table.styles.scss";
 
-const ContractTable = ({
-  contracts,
-  handleDeleteContract,
-  userRole,
-  setUserRole,
-}) => {
+const ContractTable = ({ contracts, handleDeleteContract, userRole }) => {
   return (
-    <div>
+    <div className="contract-grid">
       {contracts.length === 0 ? (
-        <p>No contracts found.</p>
+        <p className="message">No contracts found.</p>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Contract Name</th>
-              <th>Client</th>
-              <th>Start Date</th>
-              <th>Duration</th>
-              <th>Comments</th>
-              {userRole === "admin" && <th>Action</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {contracts.map((contract) => (
-              <tr key={contract.id}>
-                <td>{contract.contractName}</td>
-                <td>{contract.client}</td>
-                <td>{contract.startDate}</td>
-                <td>{contract.duration} months</td>
-                <td>{contract.comments}</td>
-                {userRole === "admin" && (
-                  <td>
-                    <button onClick={() => handleDeleteContract(contract.id)}>
-                      Delete
-                    </button>
-                  </td>
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        contracts.map((contract) => (
+          <div key={contract.id} className="contract-card">
+            <h2 class="contract-name-title">{contract.contractName}</h2>
+            <div className="contract-text">
+              <span className="contract-subtitle">Client name: </span>
+              <span>{contract.client}</span>
+            </div>
+            <div className="contract-text">
+              <span className="contract-subtitle">Start Date: </span>
+              <span>{contract.startDate}</span>
+            </div>
+            <div className="contract-text">
+              <span className="contract-subtitle">Duration: </span>
+              <span>{contract.duration} months</span>
+            </div>
+            <div className="contract-text">
+              <span className="contract-subtitle">Comments: </span>
+              <span>{contract.comments}</span>
+            </div>
+            {userRole === "admin" && (
+              <button onClick={() => handleDeleteContract(contract.id)}>
+                Delete
+              </button>
+            )}
+          </div>
+        ))
       )}
     </div>
   );
