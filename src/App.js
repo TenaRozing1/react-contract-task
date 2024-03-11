@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ContractForm from "./components/ContractForm";
-import ContractTable from "./components/ContractTable";
-import ContractFilter from "./components/ContractFilter";
-import Homepage from "./components/Homepage";
+import ContractForm from "./components/contract-form/contract-form.component";
+import ContractTable from "./components/contract-table/contract-table.component";
+import ContractFilter from "./components/filter/contract-filter.component";
+import Homepage from "./components/homepage/homepage.component";
 import {
   contracts,
   clients,
@@ -34,7 +34,6 @@ const App = () => {
     // addContract(newContract);
     setFilteredContracts([...filteredContracts, { ...newContract }]);
   };
-  
 
   const handleDeleteContract = (id) => {
     deleteContract(id);
