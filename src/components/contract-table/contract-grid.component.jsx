@@ -1,7 +1,7 @@
 import React from "react";
-import "./contract-table.styles.scss";
+import "./contract-grid.styles.scss";
 
-const ContractTable = ({ contracts, handleDeleteContract, userRole }) => {
+const ContractGrid = ({ contracts, handleDeleteContract, userRole }) => {
   return (
     <div className="contract-grid">
       {contracts.length === 0 ? (
@@ -38,4 +38,4 @@ const ContractTable = ({ contracts, handleDeleteContract, userRole }) => {
   );
 };
 
-export default ContractTable;
+export default ContractGrid;

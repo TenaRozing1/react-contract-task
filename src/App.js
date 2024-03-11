@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ContractForm from "./components/contract-form/contract-form.component";
-import ContractTable from "./components/contract-table/contract-table.component";
+import ContractGrid from "./components/contract-table/contract-grid.component";
 import ContractFilter from "./components/filter/contract-filter.component";
 import Homepage from "./components/homepage/homepage.component";
 import {
@@ -57,7 +57,7 @@ const App = () => {
           {userRole === "admin" && (
             <ContractFilter handleFilterChange={handleFilterChange} />
           )}
-          <ContractTable
+          <ContractGrid
             contracts={filteredContracts}
             handleDeleteContract={
               userRole === "admin" ? handleDeleteContract : null
