@@ -37,7 +37,8 @@
     width: 100%;
 
     .form-label {
-      display: block;
+      display: flex;
+      flex-direction: row;
       margin-bottom: 10px;
     }
 
